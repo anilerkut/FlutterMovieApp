@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "602101198960",
+    "project_id": "intern-movie-app",
+    "storage_bucket": "intern-movie-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602101198960:android:57462a213743153b3e84b5",
+        "android_client_info": {
+          "package_name": "com.example.intern_movie_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602101198960-rs3la89u6a1q1b89snogogn83q4rrtvs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.intern_movie_app",
+            "certificate_hash": "8ec8090dee8cb754f3c0cfc492275af9fa98b8a4"
+          }
+        },
+        {
+          "client_id": "602101198960-mtkhec5r1dg69bjtak0vgfujn6c317s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq1e5-PV5RBSXD0tR4xbFgLPbo3V9xggg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602101198960-mtkhec5r1dg69bjtak0vgfujn6c317s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
