@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intern_movie_app/widgets/movie_horizontalList.dart';
+import 'package:intern_movie_app/view_model/movie_horizontalList.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
-import '../widgets/movie_card.dart';
-import '../widgets/movie_gridList.dart';
+import '../view_model/movie_card.dart';
+import '../view_model/movie_gridList.dart';
 
 class MovieSearch extends StatefulWidget {
   List genreNames;

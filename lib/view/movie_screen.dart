@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intern_movie_app/view/search.dart';
 import 'package:intern_movie_app/services/auth.dart';
-import 'package:intern_movie_app/widgets/movie_category_header.dart';
-import 'package:intern_movie_app/widgets/movie_gridList.dart';
-import 'package:intern_movie_app/widgets/movie_horizontalList.dart';
+import 'package:intern_movie_app/view_model/movie_category_header.dart';
+import 'package:intern_movie_app/view_model/movie_gridList.dart';
+import 'package:intern_movie_app/view_model/movie_horizontalList.dart';
 import 'package:provider/provider.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
@@ -164,15 +164,32 @@ class _MovieScreenState extends State<MovieScreen> {
             MovieSearch(genreNames: genres)
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-            currentIndex: bottomBarIndex,
-            backgroundColor: Theme.of(context).accentColor,
-            selectedItemColor: Colors.white,
-            onTap: onTappedBottomBar,
-            items: [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-              BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search")
-            ]),
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+            boxShadow: [
+              BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 5),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.0),
+              topRight: Radius.circular(30.0),
+            ),
+            child: BottomNavigationBar(
+              currentIndex: bottomBarIndex,
+              backgroundColor: Theme.of(context).accentColor,
+              selectedItemColor: Colors.white,
+              onTap: onTappedBottomBar,
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.search), label: 'Search')
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

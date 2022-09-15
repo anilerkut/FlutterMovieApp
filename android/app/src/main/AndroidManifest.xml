@@ -2,9 +2,9 @@
     package="com.example.intern_movie_app">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="intern_movie_app"
+        android:label="Golden Popcorn"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/goldenpopcorn_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       create: (context) => AuthService(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Golden Popcorn',
         theme: ThemeData(
           primarySwatch: Colors.teal,
           primaryColor: AppColors.munsell,

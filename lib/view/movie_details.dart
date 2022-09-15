@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intern_movie_app/widgets/movie_genre_card.dart';
+import 'package:intern_movie_app/view_model/movie_genre_card.dart';
 import 'package:intern_movie_app/user.dart';
 
 class MovieDetails extends StatefulWidget {
