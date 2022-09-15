@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intern_movie_app/screens/login.dart';
+import 'package:intern_movie_app/view/login.dart';
 import 'package:intern_movie_app/controllers/user_status.dart';
-import "app_colors.dart";
+import 'constants/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'services/auth.dart';
 import 'package:provider/provider.dart';

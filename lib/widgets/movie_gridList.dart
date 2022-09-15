@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/movie_details.dart';
+import '../view/movie_details.dart';
 import 'movie_card.dart';
 
 class MovieGridList extends StatelessWidget {

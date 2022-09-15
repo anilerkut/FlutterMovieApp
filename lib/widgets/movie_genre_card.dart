@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intern_movie_app/app_colors.dart';
+import 'package:intern_movie_app/constants/app_colors.dart';
 
 class GenreCard extends StatelessWidget {
   String genre;

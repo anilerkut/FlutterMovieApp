@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intern_movie_app/screens/movie_screen.dart';
+import 'package:intern_movie_app/view/movie_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:intern_movie_app/screens/login.dart';
+import 'package:intern_movie_app/view/login.dart';
 
 import '../../services/auth.dart';
 

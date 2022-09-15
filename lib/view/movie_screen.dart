@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intern_movie_app/screens/search.dart';
+import 'package:intern_movie_app/view/search.dart';
 import 'package:intern_movie_app/services/auth.dart';
 import 'package:intern_movie_app/widgets/movie_category_header.dart';
 import 'package:intern_movie_app/widgets/movie_gridList.dart';
