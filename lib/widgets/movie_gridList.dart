@@ -9,6 +9,9 @@ class MovieGridList extends StatelessWidget {
   bool borderFlag;
   var listHeight;
   final String baseURL = "https://image.tmdb.org/t/p/w500/";
+  final String emptyImageURL ="https://demo.kolayko.com/public/templates/m-dore/assets/img/placeholder.jpg";
+  final String emptyMovieCard ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlwzQ43PINV5ZUsfqNZSFkK2CytXj_dcjWLCu9KES7xfPCrVpooJfqws-8VlhH792xl_g&usqp=CAU";
+
 
   MovieGridList({@required this.movieList, @required this.borderFlag,@required this.genreNames,this.listHeight});
 
@@ -44,8 +47,8 @@ class MovieGridList extends StatelessWidget {
                           movie_title: movieList[index]["title"],
                           movie_overview: movieList[index]["overview"],
                           movie_id: movieList[index]["id"],
-                          movie_posterURL: baseURL+movieList[index]["poster_path"],
-                          movie_backdropURL: baseURL+movieList[index]["backdrop_path"],
+                          movie_posterURL: movieList[index]["poster_path"] != null ? baseURL+movieList[index]["poster_path"] : emptyImageURL,
+                          movie_backdropURL: movieList[index]["backdrop_path"]!= null ? baseURL+movieList[index]["backdrop_path"] : emptyImageURL,
                           movie_releaseDate: movieList[index]["release_date"],                                  
                           movie_vote: (movieList[index]["vote_average"]).toDouble(),
                           genre_names: genreNames,

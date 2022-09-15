@@ -23,7 +23,7 @@ class MovieCard extends StatelessWidget {
         children: [
           Expanded(
               flex: 4,
-              child: Center(child: Image(image: NetworkImage(imagePath)))),
+              child: Center(child: ClipRRect(borderRadius: BorderRadius.circular(8),child: Image(image: NetworkImage(imagePath))))),
           Expanded(
             flex: 1,
             child: Center(

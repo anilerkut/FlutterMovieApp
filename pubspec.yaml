@@ -79,6 +79,7 @@ flutter:
     - assets/images/logopopcorn.png
     - assets/images/mainpage-background.jpg
     - assets/images/background.png
+    - assets/images/empty.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

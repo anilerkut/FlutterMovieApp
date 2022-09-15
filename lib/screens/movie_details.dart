@@ -127,8 +127,11 @@ class _MovieDetailsState extends State<MovieDetails> {
                               Expanded(
                                 flex: 9,
                                 child: Container(
-                                  child: Image(
-                                    image: NetworkImage(widget.movie_posterURL),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image(
+                                      image: NetworkImage(widget.movie_posterURL),
+                                    ),
                                   ),
                                 ),
                               ),

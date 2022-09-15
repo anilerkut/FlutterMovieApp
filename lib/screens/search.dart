@@ -26,15 +26,12 @@ class _MovieSearchState extends State<MovieSearch> {
     TMDB tmdbWithCustomLogs = TMDB(ApiKeys(api_key, access_token));
     logConfig:
     const ConfigLogger(
-      //must be true than only all other logs will be shown
       showLogs: true,
       showErrorLogs: true,
     );
-
     Map searchResult = await tmdbWithCustomLogs.v3.search.queryMovies(text);
     searchMovies = searchResult["results"];
     setState(() {});
-    print("asdads");
   }
 
   @override
@@ -70,23 +67,19 @@ class _MovieSearchState extends State<MovieSearch> {
                         ),
                       ),
                     ),
-                    Expanded(flex: 1, child: Container()), //search bottun ile arama kısmı arasındaki boşluk
+                    SizedBox(width: MediaQuery.of(context).size.width*0.02,),
                     Expanded( //search button
                       flex: 2,
-                      child: ElevatedButton(
+                      child: ElevatedButton(                   
                         onPressed: () async {
                           await movieSearchingByName(
                               searchingMovieController.text);
                           setState(() {});
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5.0, horizontal: 5),
-                          child: Text(
-                            'SEARCH',
-                            style:
-                                TextStyle(fontFamily: "Changa", fontSize: 10),
-                          ),
+                        child: Text(
+                          'SEARCH',
+                          style:
+                              TextStyle(fontFamily: "Changa", fontSize: 12),
                         ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Theme.of(context).primaryColor,

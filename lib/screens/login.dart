@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Padding(
               //User email input kısmı
-              padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
               child: TextFormField(
                 controller: _emailController,
                 validator: (value) {
@@ -90,8 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: "Enter Your Email",
                   labelText: "Email",
                   contentPadding: EdgeInsets.fromLTRB(20.0, 18.0, 20.0, 18.0),
-                  border:
-                      OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
                 ),
               ),
             ),
@@ -135,8 +135,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.pop(context);
                   }, //login işlemleri burada
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 15),
                     child: Text(
                       'LOGIN',
                       style: TextStyle(fontFamily: "Changa", fontSize: 17),
@@ -290,20 +290,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   prefixIcon: Icon(Icons.lock),
                   hintText: "Password Again",
                   labelText: "Password Again",
-                  border:
-                      OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
                 ),
               ),
             ),
             SizedBox(height: 10),
             ElevatedButton(
               //Kayıt olma butonu
-              //kullanıcı oluşturma butonu
               onPressed: () async {
                 if (_registerFormKey.currentState.validate() == true) {
-                  final user = await Provider.of<AuthService>(context,
-                          listen:
-                              false) //auth servisindeki createUser fonksiyonu sayesinde controllerdaki textleri göndererek user oluşturuldu
+                  final user = await Provider.of<AuthService>(
+                    context,
+                    listen: false,
+                  ) //auth servisindeki createUser fonksiyonu sayesinde controllerdaki textleri göndererek user oluşturuldu
                       .createUserWithEmailAndPassword(
                           _registerEmailController.text,
                           _FirstpasswordController.text);
