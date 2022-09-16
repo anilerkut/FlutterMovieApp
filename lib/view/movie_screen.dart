@@ -184,7 +184,7 @@ class _MovieScreenState extends State<MovieScreen> {
               currentIndex: bottomBarIndex, //yukarıda oluşturduğumuz indexi girdik
               backgroundColor: Theme.of(context).accentColor,
               selectedItemColor: Colors.white,
-              onTap: onTappedBottomBar, //yukarıda oluşturulan methodu çağırdık
+              onTap: onTappedBottomBar, //yukarıda oluşturulan methodu
               items: <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),

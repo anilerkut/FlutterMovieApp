@@ -131,8 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               listen: false)
                           .signInWithEmailAndPassword(
                               _emailController.text, _passwordController.text);
-                    }
-                    Navigator.pop(context);
+                    }                
                   }, //login işlemleri burada
                   child: Padding(
                     padding: const EdgeInsets.symmetric(

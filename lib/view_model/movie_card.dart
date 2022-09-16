@@ -38,7 +38,7 @@ class MovieCard extends StatelessWidget {
           ? BoxDecoration(borderRadius: BorderRadius.circular(20))
           : BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(width: 0.2),
+              border: Border.all(width: 0.15),
             ),
     );
   }
