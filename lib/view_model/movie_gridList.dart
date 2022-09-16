@@ -9,15 +9,19 @@ class MovieGridList extends StatelessWidget {
   bool borderFlag;
   var listHeight;
   final String baseURL = "https://image.tmdb.org/t/p/w500/";
-  final String emptyImageURL ="https://demo.kolayko.com/public/templates/m-dore/assets/img/placeholder.jpg";
-  final String emptyMovieCard ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlwzQ43PINV5ZUsfqNZSFkK2CytXj_dcjWLCu9KES7xfPCrVpooJfqws-8VlhH792xl_g&usqp=CAU";
+  final String emptyImageURL =
+      "https://demo.kolayko.com/public/templates/m-dore/assets/img/placeholder.jpg";
+  final String emptyMovieCard =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlwzQ43PINV5ZUsfqNZSFkK2CytXj_dcjWLCu9KES7xfPCrVpooJfqws-8VlhH792xl_g&usqp=CAU";
 
-
-  MovieGridList({@required this.movieList, @required this.borderFlag,@required this.genreNames,this.listHeight});
+  MovieGridList(
+      {@required this.movieList,
+      @required this.borderFlag,
+      @required this.genreNames,
+      this.listHeight});
 
   @override
-  Widget build(BuildContext context) 
-  {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Material(
@@ -26,14 +30,23 @@ class MovieGridList extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 15),
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey,
+                spreadRadius: 0,
+                blurRadius: 5,
+                offset: Offset(1, 1), // changes position of shadow
+              ),
+            ],
+          ),
           height: listHeight,
           child: GridView.builder(
-              gridDelegate:
-                              SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 300,
-                            childAspectRatio: 0.75,
-                          ),
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 300,
+                childAspectRatio: 0.75,
+              ),
               itemCount: movieList.length,
               scrollDirection: Axis.vertical,
               itemBuilder: ((context, index) {
@@ -47,10 +60,17 @@ class MovieGridList extends StatelessWidget {
                           movie_title: movieList[index]["title"],
                           movie_overview: movieList[index]["overview"],
                           movie_id: movieList[index]["id"],
-                          movie_posterURL: movieList[index]["poster_path"] != null ? baseURL+movieList[index]["poster_path"] : emptyImageURL,
-                          movie_backdropURL: movieList[index]["backdrop_path"]!= null ? baseURL+movieList[index]["backdrop_path"] : emptyImageURL,
-                          movie_releaseDate: movieList[index]["release_date"],                                  
-                          movie_vote: (movieList[index]["vote_average"]).toDouble(),
+                          movie_posterURL:
+                              movieList[index]["poster_path"] != null
+                                  ? baseURL + movieList[index]["poster_path"]
+                                  : emptyImageURL,
+                          movie_backdropURL:
+                              movieList[index]["backdrop_path"] != null
+                                  ? baseURL + movieList[index]["backdrop_path"]
+                                  : emptyImageURL,
+                          movie_releaseDate: movieList[index]["release_date"],
+                          movie_vote:
+                              (movieList[index]["vote_average"]).toDouble(),
                           genre_names: genreNames,
                           movie_language: movieList[index]["original_language"],
                         ),

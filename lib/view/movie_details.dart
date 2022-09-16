@@ -54,7 +54,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                             Text(
                               widget.movie_vote.toString(),
                               style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                                  fontSize: 23,fontFamily: "Changa"),
                             ),
                           ],
                         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intern_movie_app/view/search.dart';
 import 'package:intern_movie_app/services/auth.dart';
+import 'package:intern_movie_app/view/watchlist.dart';
 import 'package:intern_movie_app/view_model/movie_category_header.dart';
 import 'package:intern_movie_app/view_model/movie_gridList.dart';
 import 'package:intern_movie_app/view_model/movie_horizontalList.dart';
@@ -93,6 +94,7 @@ class _MovieScreenState extends State<MovieScreen> {
     );
     return SafeArea(
       child: Scaffold(
+        extendBody: true, //bottom navbar için bunu ekledim
         appBar: appBar,
         body: PageView(
           //bottom bar için pageview yaptık
@@ -108,7 +110,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     //movie screenin what's popular column u
                     children: [
                       MovieCategoryHeader(
-                          popularText), //ana sayfada 3 tane aynı başlığı kullandığımız için bunu widget yaptık.
+                          popularText), //ana sayfada 3 tane aynı başlığı kullandığım için bunu widget yaptım.
                       MovieHorizontalList(
                           genreNames: genres,
                           movieList: popularMovies,
@@ -161,7 +163,8 @@ class _MovieScreenState extends State<MovieScreen> {
                     fit: BoxFit.cover),
               ),
             ),
-            MovieSearch(genreNames: genres)
+            MovieSearch(genreNames: genres),
+            Watchlist(genreNames: genres),
           ],
         ),
         bottomNavigationBar: Container(
@@ -169,7 +172,7 @@ class _MovieScreenState extends State<MovieScreen> {
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30), topLeft: Radius.circular(30)),
             boxShadow: [
-              BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 5),
+              BoxShadow(color: Colors.black38, spreadRadius: 2, blurRadius: 15),
             ],
           ),
           child: ClipRRect(
@@ -177,15 +180,24 @@ class _MovieScreenState extends State<MovieScreen> {
               topLeft: Radius.circular(30.0),
               topRight: Radius.circular(30.0),
             ),
-            child: BottomNavigationBar(
-              currentIndex: bottomBarIndex,
+            child: BottomNavigationBar( //bottom navbar işlemleri
+              currentIndex: bottomBarIndex, //yukarıda oluşturduğumuz indexi girdik
               backgroundColor: Theme.of(context).accentColor,
               selectedItemColor: Colors.white,
-              onTap: onTappedBottomBar,
+              onTap: onTappedBottomBar, //yukarıda oluşturulan methodu çağırdık
               items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.search), label: 'Search')
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.search),
+                  label: 'Search',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.movie),
+                  label: 'Watchlist',
+                )
               ],
             ),
           ),
