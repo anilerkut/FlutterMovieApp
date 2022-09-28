@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intern_movie_app/view_model/movie_genre_card.dart';
-import 'package:intern_movie_app/user.dart';
+import 'package:intern_movie_app/user_watchlist.dart';
 
 class MovieDetails extends StatefulWidget {
 
@@ -168,21 +168,21 @@ class _MovieDetailsState extends State<MovieDetails> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15)),
                           backgroundColor:
-                              User.user_watchList.contains(widget.movie_id)
+                              UserWatchlist.user_watchList.contains(widget.movie_id)
                                   ? Colors.grey
                                   : Theme.of(context).primaryColor),
-                      onPressed: User.user_watchList.contains(widget.movie_id)
+                      onPressed: UserWatchlist.user_watchList.contains(widget.movie_id)
                           ? () {
-                              User.user_watchList.remove(widget.movie_id);
+                              UserWatchlist.user_watchList.remove(widget.movie_id);
                               setState(() {});
                             }
                           : () {
-                              User.user_watchList.add(widget.movie_id);
+                              UserWatchlist.user_watchList.add(widget.movie_id);
                               setState(() {});
                             }, //burada user listte film idsinin kontrolünü yaptım, listede id varsa button disable oldu.
                       child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: User.user_watchList.contains(widget.movie_id)
+                          child: UserWatchlist.user_watchList.contains(widget.movie_id)
                               ? Text(
                                   "ALREADY ADDED",
                                   style: TextStyle(fontFamily: "Changa"),

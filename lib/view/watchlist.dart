@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:intern_movie_app/user.dart';
+import 'package:intern_movie_app/user_watchlist.dart';
 import 'package:intern_movie_app/view_model/watchlist_movie_model.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
@@ -26,6 +24,28 @@ class _WatchlistState extends State<Watchlist> {
   List userWatchlist = [];
   List movie_externalID = [];
 
+  Future<void> saveWatchlist() async {
+    //watchlisti firestore a kayıt etme methodu
+    var userID = FirebaseAuth.instance.currentUser.uid;
+    DocumentReference ref =
+        await FirebaseFirestore.instance.collection("watchlists").doc(userID);
+    ref.set({"userWatchlist": UserWatchlist.user_watchList});
+  }
+
+  Future<void> getWatchlistFromFirebase() async {
+    //watchlisti firebaseden çekme methodu
+    var userID = FirebaseAuth.instance.currentUser.uid;
+    var snapshot = await FirebaseFirestore.instance
+        .collection("watchlists")
+        .doc(userID)
+        .get();
+    var listData = snapshot.data() as Map;
+    if (!listData.isEmpty) {
+      var storedList = listData["userWatchlist"] as List;
+      UserWatchlist.user_watchList.addAll(storedList);
+    }
+  }
+
   Future<void> getUserWatchlist() async {
     //ilk olarak external idlerini, idyi kullanarak çağırdık sonra imdb adi kullanarak film bilgilerine eriştik
     TMDB tmdbWithCustomLogs = TMDB(ApiKeys(api_key, access_token));
@@ -36,9 +56,9 @@ class _WatchlistState extends State<Watchlist> {
     );
     Map watchlistResult;
     Map externalIDResult;
-    for (int i = 0; i < User.user_watchList.length; i++) {
+    for (int i = 0; i < UserWatchlist.user_watchList.length; i++) {
       externalIDResult = await tmdbWithCustomLogs.v3.movies
-          .getExternalIds(User.user_watchList[i]);
+          .getExternalIds(UserWatchlist.user_watchList[i]);
       String movie_imdbID = externalIDResult["imdb_id"];
       watchlistResult = await tmdbWithCustomLogs.v3.find.getById(movie_imdbID);
       userWatchlist.add(watchlistResult["movie_results"]);
@@ -49,8 +69,24 @@ class _WatchlistState extends State<Watchlist> {
   @override
   void initState() {
     // TODO: implement initState
-    getUserWatchlist();
+    watchlistStartFunction();
     super.initState();
+  }
+
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    saveWatchlist();
+    super.deactivate();
+  }
+
+  void watchlistStartFunction() async {
+    if (UserWatchlist.firstEnter) 
+    {
+      await getWatchlistFromFirebase();
+      UserWatchlist.firstEnter = false;
+    }
+    await getUserWatchlist();
   }
 
   @override
